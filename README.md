@@ -23,36 +23,4 @@
 
 &emsp;&emsp;Then I think how to implement the time count down. I think it can use interrupt to implement, and I found the information that I can use the Timer1 clock in the Arduino board to control the interrupt, which need the library <TimerOne.h> and <Wire.h>. Then I initialize the Timer1 for 1 second. I create a variable “int simonTimer” which is timer counter. Then I use the Time1 to control the interrupt function “attachInterrupt(simonTime)”  to do the operation for each 1 second interrupt. I write the sub-function “simonTime()” when the interrupt happens, the timer counter “simonTimer” will -1. When the Simon Game finish phase of showing order, the “simonTimer” will become 10. By the Timer1 Interrupt, when the “simonTimer” = 0, the Simon Game will fail. And using the “simonTimer” write the sub-function for display the left time, when the player is in the push button phase, it will call the display function and show the left time in the LCD displayer.<br>
 <br>
-**#Schematic Diagram:** <br>
-![image](https://github.com/xuy50/ECE387_Final_Project_Simon_Game/blob/main/schematic_diagram.png)<br>
-This is the schematic diagram for my project, which show my system how to work.
-<br>
-<br>
-**#[Project files](https://github.com/xuy50/ECE387_Final_Project_Simon_Game/tree/main/piano_simon_game):** <br>
-gamut.h<br>
-piano_simon_game.ino<br>
-<br>
-**#[Extra libraries](https://github.com/xuy50/ECE387_Final_Project_Simon_Game/tree/main/library)(need install for arduino IDE)(in the library folder):**<br>
-LiquidCrystal_I2C.h<br>
-TimerOne.h<br>
-<br>
-<br>
-**#Sketch:**<br>
-![image](https://github.com/xuy50/389-Final-Project/blob/main/sketch.png)
-<br>
-<br>
-**#Demo link:**<br>
-**https://youtu.be/Z1jW39UWck0<br>**
-<br>
-<br>
-**References:<br>**
-https://www.arduino.cc/en/Tutorial/Foundations<br>
-http://jiader.blogspot.com/2018/08/arduino.html<br>
 
-<br>
-<br>
-
-**#Project-Project<br>**
-Final project proposal<br>
-I want to build a Simon Game. It basically has 4 button with 4 LED like general Simon Game, and I will use the LCD to show what is the level the player in, and show how much time left the player can do this level, after the time finishes, the game will be over, and the LCD will show the result. I want to add a buzzer to play 4 kinds of sound effects for the Simon Game, and I want to add a failure sound effect for the game failure with buzzer. If the player press the buttons in the wrong order, the game will be over.<br>
-<br><br>
