@@ -1,5 +1,11 @@
 #Project Checkpoint 1
 -------
+ -Author: Yang Xu
+ -netID: yx248
+ -Data: 09/20/2022
+ -Instructor: Rabih Younes, Hai Li
+ -Course: ECE550 D
+-------
 **Description: <br>**
 <br>
 &emsp;&emsp;The project is toy that is a Simon game which is a memory game and a piano mode with a scale.<br>
@@ -9,7 +15,7 @@
 &emsp;&emsp;The Piano Mode is like a normal piano with one scale, but because of the buzzer, it cannot implement the chord, and it is without the black keys. When player bush the keys, the LED that corresponds to the keys will light up. And when player pushes the mode change button, the mode will change to the Simon Game.<br>
 <br><br>
 
-#Project Detail and Build Description
+##Project Detail and Build Description
 -------
 &emsp;&emsp;The beginning of the project, I tried how to use the buzzer to make different sound effects, and search how to do that, then I use the Diatonic table to write the head file "gamut.h" for the diatonic frequency for the buzzer, which will make the data easier to use multiple times and make the main program cleaner. Then, I tried to make some different tones and do the piano mode function to test different tones with different sounds.<br>
 
