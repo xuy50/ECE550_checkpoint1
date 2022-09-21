@@ -27,7 +27,7 @@
 **Module hadder**<br>
 &emsp;&emsp;The `module hadder` implement a half adder with two 1bit inputs, and the carry_out and the sum of the two input are as outputs. The module is implemented by an `and` gate and an `xor` gate.<br>
 
-**Module fadder**
+**Module fadder**<br>
 &emsp;&emsp;The `module fadder` implement a full adder with two 1bit and a carry_in inputs, and the carry_out and the sum of the two input are as outputs. The module is implemented by two `xor` gates, two `and` gates, and one `or` gate.<br>
 
 **Module addition**<br>
