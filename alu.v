@@ -12,10 +12,10 @@ module alu(data_operandA, data_operandB, ctrl_ALUopcode, ctrl_shiftamt, data_res
 	wire [31:0] subr; // substract operation result
 	wire ofs; // substract operation overflow
 	
-	addition addO(data_operandA, data_operandB, addr, ofa); // add operation
-	subtraction subO(data_operandA, data_operandB, subr, ofs); // substract operation
+	addition addO(data_operandA[31:0], data_operandB[31:0], addr[31:0], ofa); // add operation
+	subtraction subO(data_operandA[31:0], data_operandB[31:0], subr[31:0], ofs); // substract operation
 	
-	assign data_result = ctrl_ALUopcode[0] ? subr : addr; // mux for check the result
+	assign data_result[31:0] = ctrl_ALUopcode[0] ? subr : addr; // mux for check the result
 	assign overflow = ctrl_ALUopcode[0] ? ofs : ofa; // mux for check the overflow
 	
 

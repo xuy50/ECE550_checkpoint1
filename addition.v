@@ -3,7 +3,11 @@ module addition(input [31:0]in1,
 					output [31:0]s,
 					output overflow);
 	
-	wire [31:0]c;
+	wire [1:0]co;
+	wire ctemp;
+	
+	wire [15:0] stemp0;
+	wire [15:0] stemp1;
 	
 	wire res31;
 	wire rein1_31;
@@ -12,14 +16,22 @@ module addition(input [31:0]in1,
 	wire [3:0]ofc;
 	
 	// addition
-	hadder add0(in1[0], in2[0], c[0], s[0]);//first half adder to get the first carry
+	//32RCA
+//	hadder add0(in1[0], in2[0], c[0], s[0]);//first half adder to get the first carry
 	
-	genvar i; //generate counter
-	generate // full adders for 1 to 31 bit.
-		for(i = 1; i <= 31; i = i + 1) begin : add_loop
-			fadder add1_31(in1[i], in2[i], c[i-1], c[i], s[i]);
-		end
-	endgenerate
+//	genvar i; //generate counter
+//	generate // full adders for 1 to 31 bit.
+//		for(i = 1; i <= 31; i = i + 1) begin : add_loop
+//			fadder add1_31(in1[i], in2[i], c[i-1], c[i], s[i]);
+//		end
+//	endgenerate
+
+	//CSA
+	RCA_16bits RCA1(in1[15:0], in2[15:0], 1'b0, ctemp, s[15:0]);
+	RCA_16bits RCA2_0(in1[31:16], in2[31:16], 1'b0, co[0], stemp0[15:0]);
+	RCA_16bits RCA2_1(in1[31:16], in2[31:16], 1'b1, co[1], stemp1[15:0]);
+	
+	assign s[31:16] = ctemp ? stemp1[15:0] : stemp0[15:0];
 	
 	//check adder overflow = in1[31]&in2[31]&sreverse[31] + in1reverse[31]&in2reverse[31]&s[31]
 	not re_s_31(res31, s[31]);
