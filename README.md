@@ -7,16 +7,14 @@
  - Course: ECE550 D
 <br>
 
-## Description:
+## Project Description:
 
-&emsp;&emsp;<br>
+&emsp;&emsp;This is the first checkpoint for the project which is to build a processor.<br>
 
-&emsp;&emsp;<br>
-
-&emsp;&emsp;<br>
+&emsp;&emsp;For checkpoint 1, I need to design and simulate an Arithmetic Logical Unit(ALU) by Quartus with verilog. I need to implement an adder that supports addition and subtraction which is non-RCA adder for two 32-bits numbers.<br>
 <br><br>
 
-## Project Detail and Build Description
+## Design Description
 
 &emsp;&emsp;<br>
 
