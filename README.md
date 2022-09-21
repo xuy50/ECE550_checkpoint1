@@ -15,9 +15,9 @@
 
 ## Design Description
 
-&emsp;&emsp;<br>
+&emsp;&emsp;I use the verilog to design the ALU and simulate it in the Quartus. My AUL implements addition and subtraction for two 32-bits number.<br>
 
-&emsp;&emsp;<br>
+&emsp;&emsp;For the ALU, there are 4 inputs and 4 outputs. Two input 32-bits numbers are 'data_operandA' and  'data_operandB' <br>
 
 &emsp;&emsp;<br>
 
