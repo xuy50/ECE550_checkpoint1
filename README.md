@@ -19,6 +19,9 @@
 
 &emsp;&emsp;For the ALU, there are 4 inputs and 4 outputs. Two input 32-bits numbers are `data_operandA` and `data_operandB`, the ALU operation control code is `ctrl_ALUopcode`, which is used to identify and control operations. The input `ctrl_shiftamt` is used to get shift amount for SLL and SRA operations, which only needs to be used in SLL and SRA operations. The output 'data_result' is the result of ALU calculation. The output `isNotEqual` is used to check whether the two numbers are equal to each other. The output `isLessThan` is used to check whether `data_operandA` is strictly less than `data_operandB`. The output `overflow` is used to check whether it overflow in addition or substrction operation.<br>
 
+&emsp;&emsp;I use the modules to implement my ALU, and use wire to connect them to get the results in the main file.<br>
+
+**module hadder**
 &emsp;&emsp;<br>
 
 &emsp;&emsp;<br>
