@@ -5,7 +5,6 @@
  - Data: 09/20/2022
  - Instructor: Rabih Younes, Hai Li
  - Course: ECE550 D
-<br>
 
 ## Project Description:
 
