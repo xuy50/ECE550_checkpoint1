@@ -6,7 +6,7 @@
  - Instructor: Rabih Younes, Hai Li
  - Course: ECE550 D
 <br>
-## Description: <br>
+## Description:
 <br>
 &emsp;&emsp;<br>
 
@@ -16,7 +16,7 @@
 <br><br>
 
 ## Project Detail and Build Description
--------
+
 &emsp;&emsp;<br>
 
 &emsp;&emsp;<br>
