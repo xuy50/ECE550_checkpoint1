@@ -6,7 +6,7 @@
  - Instructor: Rabih Younes, Hai Li
  - Course: ECE550 D
 <br>
-**Description: <br>**
+** Description: <br> **
 <br>
 &emsp;&emsp;<br>
 
