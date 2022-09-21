@@ -7,7 +7,7 @@
  - Course: ECE550 D
 <br>
 ## Description:
-<br>
+
 &emsp;&emsp;<br>
 
 &emsp;&emsp;<br>
