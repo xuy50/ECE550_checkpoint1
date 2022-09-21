@@ -17,7 +17,7 @@
 
 &emsp;&emsp;I use the verilog to design the ALU and simulate it in the Quartus. My AUL implements addition and subtraction for two 32-bits number.<br>
 
-&emsp;&emsp;For the ALU, there are 4 inputs and 4 outputs. Two input 32-bits numbers are 'data_operandA' and  'data_operandB' <br>
+&emsp;&emsp;For the ALU, there are 4 inputs and 4 outputs. Two input 32-bits numbers are `data_operandA` and  `data_operandB`, the ALU operation control code is `ctrl_ALUopcode`, which is used to identify and control operations. The input `ctrl_shiftamt` is used to get shift amount for SLL and SRA operations, which only needs to be used in SLL and SRA operations.<br>
 
 &emsp;&emsp;<br>
 
