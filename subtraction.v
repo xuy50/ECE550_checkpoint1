@@ -1,7 +1,9 @@
 module subtraction(input [31:0]in1,
 						input [31:0]in2,
 						output [31:0]s,
-						output overflow);
+						output overflow,
+						output iltr,
+						output iner);
 	
 	wire [31:0]re2;
 	
@@ -53,5 +55,13 @@ module subtraction(input [31:0]in1,
 	and of3(ofc[2], rein1_31, in2[31]);
 	and of4(ofc[3], ofc[2], s[31]);
 	or ofr(overflow, ofc[1], ofc[3]);
+	
+	//check isLessThen
+	xor ilt(iltr, s[31], overflow);
+	
+	//check isNotEqual
+	or iseor(iner, s[31], s[30], s[29], s[28], s[27], s[26], s[25], s[24], s[23], s[22],
+				s[21], s[20], s[19], s[18], s[17], s[16], s[15], s[14], s[13], s[12], s[11], 
+				s[10], s[9], s[8], s[7], s[6], s[5], s[4], s[3], s[2], s[1], s[0]);
 	
 endmodule

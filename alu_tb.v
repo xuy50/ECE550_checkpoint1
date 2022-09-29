@@ -30,15 +30,15 @@ module alu_tb();
         clock = 1'b0;    // at time 0
         errors = 0;
 
-        //checkOr();
-        //checkAnd();
+        checkOr();
+        checkAnd();
         checkAdd();
         checkSub();
-        //checkSLL();
-        //checkSRA();
+        checkSLL();
+        checkSRA();
 
-        //checkNE();
-        //checkLT();
+        checkNE();
+        checkLT();
         checkOverflow();
 
         if(errors == 0) begin
@@ -305,6 +305,31 @@ module alu_tb();
                 $display("**Error in SRA (test 12); expected: %h, actual: %h", 32'h00000000, data_result);
                 errors = errors + 1;
             end
+				
+				//self test
+				//1
+				@(negedge clock);
+            assign data_operandA = 32'h00000000;
+            assign ctrl_shiftamt = 5'b00001;
+
+            @(negedge clock);
+            if(data_result !== 32'h80000000) begin
+                $display("**Error in SRA (s1); expected: %h, actual: %h", 32'h80000000, data_result);
+                errors = errors + 1;
+            end
+            
+				//2
+				@(negedge clock);
+            assign data_operandA = 32'h00001000;
+            assign ctrl_shiftamt = 5'b00100;
+
+            @(negedge clock);
+            if(data_result !== 32'h00000100) begin
+                $display("**Error in SRA (s2); expected: %h, actual: %h", 32'h80000000, data_result);
+                errors = errors + 1;
+            end
+				
+				//end test
         end
     endtask
 
@@ -322,6 +347,114 @@ module alu_tb();
                 $display("**Error in isNotEqual (test 13); expected: %b, actual: %b", 1'b0, isNotEqual);
                 errors = errors + 1;
             end
+				else begin
+					$display("NE - A: %h, B: %h, expected: %h, actual: %h", data_operandA, data_operandB, data_expected, data_result);
+				end
+				
+				//self test
+					//1
+                @(negedge clock);
+                assign data_operandA = 32'h00000001;
+                assign data_operandB = 32'h00000001;
+
+                @(negedge clock);
+                if(isNotEqual !== 1'b0) begin
+                    $display("**Error in NE (test s1); expected: %h, actual: %b", 1'b0, isNotEqual);
+                    errors = errors + 1;
+                end
+					 // test output print
+					 else begin
+						$display("NE - A: %h, B: %h, expected: %h, actual: %b", data_operandA, data_operandB, 1'b0, isNotEqual);
+					 end
+					 
+					 //2
+                @(negedge clock);
+                assign data_operandA = 32'h00000010;
+                assign data_operandB = 32'h00000001;
+
+                @(negedge clock);
+                if(isNotEqual !== 1'b1) begin
+                    $display("**Error in NE (test s2); expected: %h, actual: %b", 1'b1, isNotEqual);
+                    errors = errors + 1;
+                end
+					 // test output print
+					 else begin
+						$display("NE - A: %h, B: %h, expected: %h, actual: %b", data_operandA, data_operandB, 1'b1, isNotEqual);
+					 end
+					 
+					 //3
+                @(negedge clock);
+                assign data_operandA = 32'h00000011;
+                assign data_operandB = 32'h00000001;
+
+                @(negedge clock);
+                if(isNotEqual !== 1'b1) begin
+                    $display("**Error in NE (test s3); expected: %h, actual: %b", 1'b1, isNotEqual);
+                    errors = errors + 1;
+                end
+					 // test output print
+					 else begin
+						$display("NE - A: %h, B: %h, expected: %h, actual: %b", data_operandA, data_operandB, 1'b1, isNotEqual);
+					 end
+					 
+					 //4
+                @(negedge clock);
+                assign data_operandA = 32'h00100001;
+                assign data_operandB = 32'h00100001;
+
+                @(negedge clock);
+                if(isNotEqual !== 1'b0) begin
+                    $display("**Error in NE (test s4); expected: %h, actual: %b", 1'b0, isNotEqual);
+                    errors = errors + 1;
+                end
+					 // test output print
+					 else begin
+						$display("NE - A: %h, B: %h, expected: %h, actual: %b", data_operandA, data_operandB, 1'b0, isNotEqual);
+					 end
+					 
+					 //5
+                @(negedge clock);
+                assign data_operandA = 32'h10100001;
+                assign data_operandB = 32'h00100001;
+
+                @(negedge clock);
+                if(isNotEqual !== 1'b1) begin
+                    $display("**Error in NE (test s5); expected: %h, actual: %b", 1'b1, isNotEqual);
+                    errors = errors + 1;
+                end
+					 // test output print
+					 else begin
+						$display("NE - A: %h, B: %h, expected: %h, actual: %b", data_operandA, data_operandB, 1'b1, isNotEqual);
+					 end
+					 
+					 //for
+					 for(index = 0; index < 31; index = index + 1)
+					 begin
+						 @(negedge clock);
+						 assign data_operandA = 32'h00000001;
+						 assign data_operandB = 32'h00000001 << index;
+							
+						 if(index == 0) begin
+							assign data_expected = 1'b0;
+						 end
+						 else begin
+							assign data_expected = 1'b1;
+						 end
+	
+						 @(negedge clock);
+						 if(isNotEqual !== data_expected) begin
+							  $display("**Error in NE (test s for part %d); expected: %h actual: %b", index, data_expected, isNotEqual);
+							  errors = errors + 1;
+						 end
+						 // test output print
+						 else begin
+							$display("NE - A: %h, B: %h, expected: %h, actual: %b", data_operandA, data_operandB, data_expected, isNotEqual);
+						 end
+					 // end for test
+					 end
+					 
+				// end test
+				
         end
     endtask
 
@@ -360,6 +493,8 @@ module alu_tb();
                 $display("**Error in isLessThan (test 24); expected: %b, actual: %b", 1'b1, isLessThan);
                 errors = errors + 1;
             end
+				
+				
         end
     endtask
 
